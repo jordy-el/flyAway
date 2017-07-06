@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  departing: 2017-07-07 00:51:35
+  seats: 1
+  destination: one
+  origin: one
+
+two:
+  departing: 2017-07-07 00:51:35
+  seats: 1
+  destination: two
+  origin: two
