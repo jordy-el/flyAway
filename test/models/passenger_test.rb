@@ -5,12 +5,10 @@ class PassengerTest < ActiveSupport::TestCase
   #   assert true
   # end
   test "ensures nameless is invalid" do
-    passenger = passengers(:not_valid)
-    assert_not passenger.save
+    assert_not Passenger.new.save
   end
 
   test "ensures named passenger is valid" do
-    passenger = passengers(:valid)
-    assert passenger.save
+    assert Passenger.new(name: "Jordan").save
   end
 end
