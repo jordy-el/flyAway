@@ -10,6 +10,7 @@ class FlightsController < ApplicationController
     else
       @flights = Flight.all
     end
+    @flights = @flights.order(:departing)
     @airports = Airport.all
   end
 end
