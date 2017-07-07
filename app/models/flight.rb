@@ -3,4 +3,5 @@ class Flight < ApplicationRecord
   validates :seats, presence: true
   belongs_to :destination, class_name: "Airport"
   belongs_to :origin, class_name: "Airport"
+  has_many :tickets
 end
