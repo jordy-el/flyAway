@@ -14,3 +14,14 @@
  *= require_self
  */
  @import "semantic-ui";
+
+ .items>.item {
+     padding: 10px !important;
+     margin: 10px !important;
+     border: 1px solid #dededf !important;
+     border-radius: 8px !important;
+ }
+
+ #first-item {
+     padding-top: 10px !important;
+ }
