@@ -1,2 +1,65 @@
-<h1>Flights#index</h1>
-<p>Find me in app/views/flights/index.html.erb</p>
+<div class="ui centered grid">
+    <div class="eight wide column">
+        <form id="search-form">   
+            <div class="ui form">
+                <div class="inline field">
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="origin">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Origin</div>
+                        <div class="menu">
+                            <% @airports.each do |a| %>
+                                <div class="item" data-value="<%= a.location %>"><%= a.location %></div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <div class="ui selection dropdown">
+                        <input type="hidden" name="destination">
+                        <i class="dropdown icon"></i>
+                        <div class="default text">Destination</div>
+                        <div class="menu">
+                            <% @airports.each do |a| %>
+                                <div class="item" data-value="<%= a.location %>"><%= a.location %></div>
+                            <% end %>
+                        </div>
+                    </div>
+                    <button type="submit" class="ui primary button" id="search-submit">Submit</button>
+                    <button class="ui basic button" id="clear-search">Clear</button>
+                    <script>
+                        $("#search-submit").click(function() {
+                            $("#search-form").append("<input type='hidden' name='search' value='t'>");
+                        });
+                        $("#clear-search").click(function() {
+                            window.location.href = '/';
+                        });
+                    </script>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
+<div class="ui centered grid">
+    <div class="eight wide column">
+        <div class="ui items">
+            <% @flights.each do |f| %>
+                <div class="item">
+                    <div class="image">
+                        <img src="/images/wireframe/image.png">
+                    </div>
+                    <div class="content">
+                        <a class="header"><%= f.origin.location + " to " + f.destination.location %></a>
+                        <div class="meta">
+                            <span>Departing</span>
+                        </div>
+                        <div class="description">
+                            <p><%= f.departing %></p>
+                        </div>
+                        <div class="extra">
+                            <p><%= f.seats.to_s + " seats left" %></p>
+                        </div>
+                    </div>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
