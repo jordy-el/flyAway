@@ -6,10 +6,12 @@ class BillTest < ActiveSupport::TestCase
   # end
   def setup
     @passenger = Passenger.create(name: "Jordan")
+    @booking = Booking.create
   end
 
   test "saves valid bill" do
-    assert Bill.new(address: "12312312asdadsasd", phone: "132213123", passenger_id: @passenger.id).save!
+    @booking.bill = bill = Bill.new(address: "12312312asdadsasd", phone: "132213123", passenger_id: @passenger.id)
+    assert bill.save!
   end
 
   test "rejects missing address" do

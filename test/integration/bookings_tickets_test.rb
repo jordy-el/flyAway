@@ -1,11 +1,14 @@
 require 'test_helper'
 
-class TicketsFlightsPassengersTest < ActionDispatch::IntegrationTest
+class BookingsTicketsTest < ActionDispatch::IntegrationTest
   # test "the truth" do
   #   assert true
   # end
   def setup
     @booking = Booking.create
+    @bill = Bill.new(address: "asdasd", phone: "123123")
+    @booking.bill = @bill
+    @bill.save!
     @passenger = Passenger.create(name: "Jordan")
     @origin = Airport.create(location: "Melbourne")
     @destination = Airport.create(location: "Sydney")
@@ -13,17 +16,18 @@ class TicketsFlightsPassengersTest < ActionDispatch::IntegrationTest
     @flight.destination = @destination
     @flight.origin = @origin
     @flight.save
-    @booking.tickets << @ticket = Ticket.new(price: 250)
-    @ticket.flight = @flight
+    @booking.tickets << @ticket = Ticket.new
+    @ticket.price = 123
     @ticket.passenger = @passenger
-    @ticket.save
+    @ticket.flight = @flight
+    @ticket.save!
   end
 
-  test "can find ticket in passenger's ticket list" do
-    assert_includes(@passenger.tickets, @ticket)
+  test "ticket should show up in booking's tickets" do
+    assert_includes(@booking.tickets, @ticket)
   end
 
-  test "can find ticket in flight's ticket list" do
-    assert_includes(@flight.tickets, @ticket)
+  test "bill should show up in booking's bill" do
+    assert_equal(@booking.bill, @bill)
   end
 end

@@ -6,6 +6,7 @@ class TicketTest < ActiveSupport::TestCase
   # end
 
   def setup
+    @booking = Booking.create
     @passenger = Passenger.create(name: "Jordan")
     @origin = Airport.create(location: "Melbourne")
     @destination = Airport.create(location: "Sydney")
@@ -16,10 +17,10 @@ class TicketTest < ActiveSupport::TestCase
   end
 
   test "saves valid ticket" do
-    ticket =  Ticket.new(price: 250)
+    @booking.tickets << ticket = Ticket.new(price: 250)
     ticket.flight = @flight
     ticket.passenger = @passenger
-    assert ticket.save
+    assert ticket.save!
   end
 
   test "rejects missing price info" do
