@@ -45,7 +45,7 @@
             <% @flights.each do |f| %>
                 <div class="item">
                     <div class="image">
-                        <img src="/images/wireframe/image.png">
+                        <img src="http://i.imgur.com/JeQYolM.jpg">
                     </div>
                     <div class="content">
                         <a class="header"><%= f.origin.location + " to " + f.destination.location %></a>
@@ -53,7 +53,7 @@
                             <span>Departing</span>
                         </div>
                         <div class="description">
-                            <p><%= f.departing %></p>
+                            <p><%= f.departing.strftime("%A %d %B at %I:%M %p") %></p>
                         </div>
                         <div class="extra">
                             <p><%= f.seats.to_s + " seats left" %></p>
