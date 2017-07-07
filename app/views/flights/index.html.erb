@@ -6,7 +6,7 @@
                     <div class="ui selection dropdown">
                         <input type="hidden" name="origin">
                         <i class="dropdown icon"></i>
-                        <div class="default text">Origin</div>
+                        <div class="default text">Select Origin</div>
                         <div class="menu">
                             <% @airports.each do |a| %>
                                 <div class="item" data-value="<%= a.location %>"><%= a.location %></div>
@@ -18,6 +18,7 @@
                         <i class="dropdown icon"></i>
                         <div class="default text">Destination</div>
                         <div class="menu">
+                            <div class="item" data-value="">All</div>
                             <% @airports.each do |a| %>
                                 <div class="item" data-value="<%= a.location %>"><%= a.location %></div>
                             <% end %>
@@ -56,6 +57,10 @@
                         </div>
                         <div class="extra">
                             <p><%= f.seats.to_s + " seats left" %></p>
+                            <div class="ui right floated primary button">
+                                Book this flight
+                                <i class="right chevron icon"></i>
+                            </div>
                         </div>
                     </div>
                 </div>
