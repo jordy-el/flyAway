@@ -30,7 +30,7 @@
                 <div class="three wide column">
                     <div class="ui fluid buttons">
                         <button type="submit" class="ui primary button" id="search-submit">Submit</button>
-                        <button class="ui blue basic button" id="clear-search">Clear</button>
+                        <button type="button" class="ui blue basic button" id="clear-search">Clear</button>
                     </div>
                 </div>
                 <script>
@@ -38,7 +38,7 @@
                         $("#search-form").append("<input type='hidden' name='search' value='t'>");
                     });
                     $("#clear-search").click(function() {
-                        window.location.href = '/';
+                        $("#main-link").click();
                     });
                 </script>
             </div>
@@ -61,7 +61,7 @@
         <div class="ui items">
             <% @flights.each do |f| %>
                 <div class="item">
-                    <div class="image">
+                    <div class="ui small image">
                         <img src="http://i.imgur.com/JeQYolM.jpg">
                     </div>
                     <div class="content">
@@ -74,6 +74,10 @@
                         </div>
                         <div class="extra">
                             <p><%= f.seats.to_s + " seats left" %></p>
+                            <button type="button" class="ui orange fluid button">
+                                Book this flight
+                                <i class="right chevron icon"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

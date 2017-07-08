@@ -12,7 +12,10 @@
     <body>
         <div class="ui fixed menu">
             <div class="header item">
-                flyAway
+                <%= link_to root_path do %>
+                    <i class="plane icon" id="plane-icon"></i>
+                    <span id="main-link">flyAway</span>
+                <% end %>
             </div>
         </div>
         <%= yield %>

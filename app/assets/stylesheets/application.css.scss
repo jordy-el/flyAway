@@ -21,6 +21,17 @@
     }
 }
 
+@media only screen and (min-width: 768px) {
+    .ui.orange.fluid.button {
+        position: relative;
+        top: 14px;
+    }
+}
+
+.ui.orange.fluid.button {
+    margin: 0;
+}
+
 .visible.transition {
     z-index: 1;
 }
@@ -33,7 +44,7 @@
 body {
     background-image: url(image-path("cloudy-day.png"));
     background-attachment: fixed;
-    padding-top: 42px;
+    padding-top: 46px;
 }
 
 .items>.item {
@@ -49,6 +60,10 @@ body {
 
 .ui.menu {
     margin: 0 !important;
+}
+
+.header.item>a {
+    color: #676767;
 }
 
 #search-form {
@@ -67,5 +82,5 @@ body {
 
 .go-behind {
     position: relative !important;
-    z-index: -1 !important;
+    z-index: 0 !important;
 }
