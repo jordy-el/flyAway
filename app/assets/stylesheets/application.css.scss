@@ -1,64 +1,71 @@
 /*
- * This is a manifest file that'll be compiled into application.css, which will include all the files
- * listed below.
- *
- * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
- * vendor/assets/stylesheets directory can be referenced here using a relative path.
- *
- * You're free to add application-wide styles to this file and they'll appear at the bottom of the
- * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
- * files in this directory. Styles in this file should be added after the last require_* statement.
- * It is generally better to create a new file per style scope.
- *
- *= require_tree .
- *= require_self
- */
- @import "semantic-ui";
+* This is a manifest file that'll be compiled into application.css, which will include all the files
+* listed below.
+*
+* Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+* vendor/assets/stylesheets directory can be referenced here using a relative path.
+*
+* You're free to add application-wide styles to this file and they'll appear at the bottom of the
+* compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+* files in this directory. Styles in this file should be added after the last require_* statement.
+* It is generally better to create a new file per style scope.
+*
+*= require_tree .
+*= require_self
+*/
+@import "semantic-ui";
 
- .visible.transition {
-  z-index: 1;
+@media only screen and (min-width: 992px) {
+    .ui.search.dropdown .menu {
+        max-height: 14.72857143rem;
+    }
 }
 
- body {
-     background-image: url(image-path("cloudy-day.png"));
-     background-attachment: fixed;
-     padding-top: 42px;
- }
+.visible.transition {
+    z-index: 1;
+}
 
- .items>.item {
-     padding: 10px !important;
-     border: 1px solid #dededf !important;
-     border-radius: 8px !important;
-     background-color: white !important;
- }
+.ui.grid > .column:not(.row) {
+    padding-left: 5px;
+    padding-right: 5px;
+}
 
- #first-item {
-     padding-top: 10px !important;
- }
+body {
+    background-image: url(image-path("cloudy-day.png"));
+    background-attachment: fixed;
+    padding-top: 42px;
+}
 
- .ui.menu {
-     margin: 0 !important;
- }
+.items>.item {
+    padding: 10px !important;
+    border: 1px solid #dededf !important;
+    border-radius: 8px !important;
+    background-color: white !important;
+}
 
- .ui.fluid.buttons {
-     border: 1px solid rgba(34, 36, 38, 0.15);
-     border-radius: 5px;
- }
+#first-item {
+    padding-top: 10px !important;
+}
 
- #search-form {
-     background-color: white;
-     margin-bottom: 14px;
- }
+.ui.menu {
+    margin: 0 !important;
+}
 
- .dropdown.icon:focus {
-     outline: none;
- }
+#search-form {
+    background-color: rgba(255, 255, 255, 0.8);
+    margin-bottom: 14px;
+    border-bottom: 1px solid rgba(34, 36, 38, 0.15);
+}
 
- .ui.grid + .grid {
+.dropdown.icon:focus {
+    outline: none;
+}
+
+.ui.grid + .grid {
     margin-top: 0 !important;
 }
 
- .go-behind {
+.go-behind {
     position: relative !important;
     z-index: -1 !important;
 }

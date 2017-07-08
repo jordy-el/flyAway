@@ -1,7 +1,7 @@
 <form id="search-form">   
     <div class="ui form">
         <div class="inline field">
-            <div class="ui centered nine column grid">
+            <div class="ui centered nine column stackable grid container">
                 <div class="three wide column">
                     <div class="ui fluid selection dropdown search">
                         <input type="hidden" name="origin">
@@ -30,7 +30,7 @@
                 <div class="three wide column">
                     <div class="ui fluid buttons">
                         <button type="submit" class="ui primary button" id="search-submit">Submit</button>
-                        <button class="ui basic button" id="clear-search">Clear</button>
+                        <button class="ui blue basic button" id="clear-search">Clear</button>
                     </div>
                 </div>
                 <script>
@@ -46,15 +46,17 @@
     </div>
 </form>
 <% if !flash.empty? %>
-    <div class="ui centered grid go-behind">
+    <div class="ui centered grid go-behind container">
         <div class="nine wide column">
             <% flash.each do |key, value| %>
-                <div class="ui floating negative message"><%= value %></div>
+                <div class="ui floating error message">
+                    <div class="header"><%= value %></div>
+                </div>
             <% end %>
         </div>
     </div>
 <% end %>
-<div class="ui centered grid go-behind">
+<div class="ui centered stackable grid go-behind container">
     <div class="nine wide column">
         <div class="ui items">
             <% @flights.each do |f| %>
