@@ -1,47 +1,62 @@
-<div class="ui centered grid">
-    <div class="eight wide column">
-        <form id="search-form">   
-            <div class="ui form">
-                <div class="inline field">
-                    <div class="ui selection dropdown">
+<form id="search-form">   
+    <div class="ui form">
+        <div class="inline field">
+            <div class="ui centered nine column grid">
+                <div class="three wide column">
+                    <div class="ui fluid selection dropdown search">
                         <input type="hidden" name="origin">
                         <i class="dropdown icon"></i>
-                        <div class="default text">Select Origin</div>
+                        <div class="default text">Origin</div>
                         <div class="menu">
                             <% @airports.each do |a| %>
                                 <div class="item" data-value="<%= a.location %>"><%= a.location %></div>
                             <% end %>
                         </div>
                     </div>
-                    <div class="ui selection dropdown">
+                </div>
+                <div class="three wide column">
+                    <div class="ui fluid selection dropdown search">
                         <input type="hidden" name="destination">
                         <i class="dropdown icon"></i>
                         <div class="default text">Destination</div>
                         <div class="menu">
-                            <div class="item" data-value="">All</div>
+                            <div class="item">All</div>
                             <% @airports.each do |a| %>
                                 <div class="item" data-value="<%= a.location %>"><%= a.location %></div>
                             <% end %>
                         </div>
                     </div>
-                    <button type="submit" class="ui primary button" id="search-submit">Submit</button>
-                    <button class="ui basic button" id="clear-search">Clear</button>
-                    <script>
-                        $("#search-submit").click(function() {
-                            $("#search-form").append("<input type='hidden' name='search' value='t'>");
-                        });
-                        $("#clear-search").click(function() {
-                            window.location.href = '/';
-                        });
-                    </script>
                 </div>
+                <div class="three wide column">
+                    <div class="ui fluid buttons">
+                        <button type="submit" class="ui primary button" id="search-submit">Submit</button>
+                        <button class="ui basic button" id="clear-search">Clear</button>
+                    </div>
+                </div>
+                <script>
+                    $("#search-submit").click(function() {
+                        $("#search-form").append("<input type='hidden' name='search' value='t'>");
+                    });
+                    $("#clear-search").click(function() {
+                        window.location.href = '/';
+                    });
+                </script>
             </div>
-        </form>
+        </div>
     </div>
-</div>
-<div class="ui centered grid">
-    <div class="eight wide column">
-        <div class="ui vertically divided items">
+</form>
+<% if !flash.empty? %>
+    <div class="ui centered grid go-behind">
+        <div class="nine wide column">
+            <% flash.each do |key, value| %>
+                <div class="ui floating negative message"><%= value %></div>
+            <% end %>
+        </div>
+    </div>
+<% end %>
+<div class="ui centered grid go-behind">
+    <div class="nine wide column">
+        <div class="ui items">
             <% @flights.each do |f| %>
                 <div class="item">
                     <div class="image">

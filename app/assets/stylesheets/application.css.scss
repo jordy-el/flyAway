@@ -15,18 +15,50 @@
  */
  @import "semantic-ui";
 
+ .visible.transition {
+  z-index: 1;
+}
+
+ body {
+     background-image: url(image-path("cloudy-day.png"));
+     background-attachment: fixed;
+     padding-top: 42px;
+ }
+
  .items>.item {
      padding: 10px !important;
-     margin: 10px !important;
      border: 1px solid #dededf !important;
      border-radius: 8px !important;
+     background-color: white !important;
  }
 
  #first-item {
      padding-top: 10px !important;
  }
 
- form#search-form {
-    position: relative;
-    left: 2.7vw;
+ .ui.menu {
+     margin: 0 !important;
+ }
+
+ .ui.fluid.buttons {
+     border: 1px solid rgba(34, 36, 38, 0.15);
+     border-radius: 5px;
+ }
+
+ #search-form {
+     background-color: white;
+     margin-bottom: 14px;
+ }
+
+ .dropdown.icon:focus {
+     outline: none;
+ }
+
+ .ui.grid + .grid {
+    margin-top: 0 !important;
+}
+
+ .go-behind {
+    position: relative !important;
+    z-index: -1 !important;
 }
