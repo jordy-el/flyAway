@@ -1,0 +1,62 @@
+<div class="ui centered stackable grid go-behind container">
+    <div class="nine wide column">
+        <div class="ui fluid raised card">
+        <%= form_tag "/bookings", id: "booking-form", class: "ui form" do %>
+            <div class="content">
+                <div class="ui dividing header">Flight #<%= @flight.id %></div>
+                <div class="meta">
+                    <span class="category"><%= @flight.origin.location + " to " + @flight.destination.location %><br />Departing on <%= @flight.departing.strftime("%A %d %B at %I:%M %p") %></span>
+                </div>
+                <h4 class="ui dividing header">Passenger Information</h4>
+                <div class="description">
+                    <%= hidden_field_tag "flight", "", value: @flight.id %>
+                    <div class="passenger-form ui two column grid">
+                        <div class="column">
+                            <%= text_field_tag "passengers[][:name]", "", placeholder: "Name", class: "ui fluid field", 'required' => '' %>
+                        </div>
+                        <div class="column">
+                            <button type="button" class="ui primary vertical animated fluid button new-passenger" tabindex="0">
+                                <div class="visible content">Add another passenger</div>
+                                <div class="hidden content">
+                                    <i class="up arrow icon"></i>
+                                </div>
+                            </button>
+                        </div>
+                        <script>
+                            passengerForm = $(".passenger-form:last").clone();
+                            passengerForm.find(".new-passenger").replaceWith("<button type='button' class='ui red basic animated fade fluid button remove-passenger' tabindex='0'><div class='visible content'>Remove passenger</div><div class='hidden content'><i class='remove circle icon'></i></div></button>");
+                        </script>
+                    </div>
+                    <h4 class="ui dividing header">Billing Information</h4>
+                    <div class="field">
+                        <label>Address</label>
+                        <%= text_field_tag "bill[:address]", "", placeholder: "Address", "required" => "" %>
+                    </div>
+                    <div class="field">
+                        <label>Phone number</label>
+                        <%= number_field_tag "bill[:phone]", "", placeholder: "Phone number", "required" => "" %>
+                    </div>
+                </div>
+            </div>
+            <div class="ui section divider"></div>
+            <div class="extra content">
+                <button class="ui left labeled right floated button">
+                    <p class="ui basic right pointing label">Total: $<span id="booking-total"><%= @ticket.price %></span></p>
+                    <div id="booking-submit" class="ui submit positive button">Book!</div>
+                </button>
+                <script>const basePrice = parseInt($("#booking-total").text(), 10);</script>
+            </div>
+        <% end %>
+        </div>
+    </div>
+    <script>
+        $(".new-passenger").click(function() {
+            var currentTotal = parseInt($("#booking-total").text(), 10);
+            $("#booking-total").text((currentTotal + basePrice).toString());
+            $(".passenger-form:first").parent().prepend(passengerForm.clone());
+        });
+        $(document).on('click', ".remove-passenger", function() {
+            $(this).parent().parent().remove();
+        });
+    </script>
+</div>

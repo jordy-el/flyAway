@@ -74,10 +74,12 @@
                         </div>
                         <div class="extra">
                             <p><%= f.seats.to_s + " seats left" %></p>
-                            <button type="button" class="ui orange fluid button">
-                                Book this flight
-                                <i class="right chevron icon"></i>
-                            </button>
+                            <%= link_to new_booking_path(flight: f.id) do %>
+                                <button type="button" class="ui orange fluid button">
+                                    Book this flight
+                                    <i class="right chevron icon"></i>
+                                </button>
+                            <% end %>
                         </div>
                     </div>
                 </div>

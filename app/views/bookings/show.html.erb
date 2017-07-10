@@ -1,0 +1,33 @@
+<div class="ui centered stackable grid go-behind container">
+    <div class="nine wide column">
+        <div class="ui fluid card">
+            <div class="content">
+            <div class="ui dividing header">
+                <%= @booking.tickets[0].flight.origin.location + " to " + @booking.tickets[0].flight.destination.location %>
+                <div class="meta">Departing on <%= @booking.tickets[0].flight.departing.strftime("%A %d %B at %I:%M %p") %></div>
+            </div>
+            <div class="description">
+                <div class="ui small header">Passengers:</div>
+                <div class="ui big horizontal divided list">
+                    <% @booking.tickets.each do |ticket| %>
+                        <div class="item">
+                            <div class="content">
+                                <div class="text"><%= ticket.passenger.name %></div>
+                            </div>
+                        </div>
+                    <% end %>
+                </div>
+            </div>
+            <div class="ui extra content item">
+                <h4 class="ui dividing header">Billing information:</h4>
+                <div class="ui content">
+                    <label><strong>Address: </strong></label>
+                    <div class="ui text"><%= @booking.bill.address %></div>
+                    <div class="ui hidden divider"></div>
+                    <label><strong>Phone: </strong></label>
+                    <div class="ui text"><%= @booking.bill.phone %></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
