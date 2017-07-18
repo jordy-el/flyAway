@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @passengers = []
     @flight = Flight.find(params[:flight].to_i)
     @booking = Booking.create
-    @bill = Bill.new(address: params["bill"][":address"], phone: params["bill"][":phone"])
+    @bill = Bill.new(address: params["bill"][":address"], phone: params["bill"][":phone"], email: params["bill"][":email"])
     @booking.bill = @bill
     @bill.save!
     passenger_params.each do |passenger|
@@ -32,6 +32,7 @@ class BookingsController < ApplicationController
     if @booking.save! && @flight.seats >= @passengers.length
       @flight.seats = @flight.seats - @passengers.length
       @flight.save!
+      BookingMailer.booking_email(@booking).deliver_now!
       redirect_to booking_url(@booking)
     else
       redirect_to new_booking_url(flight: @flight.id)

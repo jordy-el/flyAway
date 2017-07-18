@@ -1,0 +1,9 @@
+Your booking with flyAway
+===============================================
+You have successfully booked <%= @booking.tickets.length %> seat(s) on flight <%= @booking.tickets[0].flight.id %>.
+
+To view your booking on our site, please visit <%= booking_url(@booking) %>
+
+Thanks for booking with flyAway and have a great day!
+
+<%= root_url %>

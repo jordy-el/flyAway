@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Your booking with flyAway</h1>
+    <p>
+      You have successfully booked <%= @booking.tickets.length %> seat(s) on flight <%= @booking.tickets[0].flight.id %>.<br>
+    </p>
+    <p>
+      To view your booking on our site, please click <%= link_to "this link", booking_url(@booking) %>.
+    </p>
+    <p>Thanks for booking with <%= link_to "flyAway", root_url %> and have a great day!</p>
+  </body>
+</html>
