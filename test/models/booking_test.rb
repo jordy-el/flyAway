@@ -5,6 +5,6 @@ class BookingTest < ActiveSupport::TestCase
   #   assert true
   # end
   test "should save valid booking" do
-    assert Booking.new.save!
+    assert Booking.new(bill: Bill.create(address: "asdasd", phone: "234234", email: "asdasd@adasd.asdasd")).save!
   end
 end

@@ -6,7 +6,7 @@ class BookingsTicketsTest < ActionDispatch::IntegrationTest
   # end
   def setup
     @booking = Booking.create
-    @bill = Bill.new(address: "asdasd", phone: "123123")
+    @bill = Bill.new(address: "asdasd", phone: "123123", email: "asdsad@asdsad.asdasd")
     @booking.bill = @bill
     @bill.save!
     @passenger = Passenger.create(name: "Jordan")

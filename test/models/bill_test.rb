@@ -10,7 +10,7 @@ class BillTest < ActiveSupport::TestCase
   end
 
   test "saves valid bill" do
-    @booking.bill = bill = Bill.new(address: "12312312asdadsasd", phone: "132213123", passenger_id: @passenger.id)
+    @booking.bill = bill = Bill.new(address: "12312312asdadsasd", phone: "132213123", passenger_id: @passenger.id, email: "asdasd@asdasd.asdasd")
     assert bill.save!
   end
 
