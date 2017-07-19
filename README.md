@@ -6,4 +6,4 @@ Assignment for [The Odin Project](https://www.theodinproject.com)
 * TDD unit/integration testing with mini-test
 * Mailer for booking confirmation
 
-Hosted at [Heroku](https://infinite-earth-40983.herokuapp.com/)
+Hosted at [Heroku](https://arcane-everglades-15299.herokuapp.com/)
