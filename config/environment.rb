@@ -2,9 +2,9 @@
 require_relative 'application'
 
 ActionMailer::Base.smtp_settings = {
-  :user_name => 'NIL',
-  :password => 'NIL',
-  :domain => 'infinite-earth-40983.herokuapp.com',
+  :user_name => ENV["sendgrid_user"],
+  :password => ENV["sendgrid_pass"],
+  :domain => 'arcane-everglades-15299.herokuapp.com',
   :address => 'smtp.sendgrid.net',
   :port => 587,
   :authentication => :plain,
